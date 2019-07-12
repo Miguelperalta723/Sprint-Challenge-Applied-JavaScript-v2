@@ -17,3 +17,67 @@
     <div class="right-button"> > </div>
   </div>
 */
+const carouselContainer = document.querySelector('.carousel-container')
+
+
+carouselContainer.appendChild(carouselComponent())
+
+function carouselComponent(){
+  const carousel = document.createElement('div')
+  const leftBtn = document.createElement('div')
+  const mountainsImg = document.createElement('img')
+  const computerImg = document.createElement('img')
+  const treesImg = document.createElement('img')
+  const turntableImg = document.createElement('img')
+  const rightBtn = document.createElement('div')
+
+  carousel.classList.add('carousel')
+  leftBtn.classList.add('left-button')
+  rightBtn.classList.add('right-button')
+  mountainsImg.classList.add('img')
+  computerImg.classList.add('img')
+  treesImg.classList.add('img')
+  turntableImg.classList.add('img')
+  
+  leftBtn.textContent = ' < '
+  rightBtn.textContent = ' > '
+
+  mountainsImg.src = "./assets/carousel/mountains.jpeg"
+  computerImg.src = "./assets/carousel/computer.jpeg"
+  treesImg.src = "./assets/carousel/trees.jpeg" 
+  turntableImg.src = "./assets/carousel/turntable.jpeg"
+
+  carousel.appendChild(leftBtn)
+  carousel.appendChild(mountainsImg)
+  carousel.appendChild(computerImg)
+  carousel.appendChild(treesImg)
+  carousel.appendChild(turntableImg)
+  carousel.appendChild(rightBtn)
+
+  
+  let images = document.getElementsByClassName('img')
+  let currentIndex = 0
+  mountainsImg.style.display = "block"
+
+
+  leftBtn.addEventListener('click', function slideLeft(){
+      if ((currentIndex - 1) < 0){
+      currentIndex = images.length-1;
+      } else {
+      currentIndex -= 1;        
+      }
+      Array.from(images).forEach(image => image.style.display = "none");
+      images[currentIndex].style.display = "block";
+  })
+
+  rightBtn.addEventListener('click', function slideRight(){
+      currentIndex += 1;
+      if (currentIndex >= images.length){
+      currentIndex = 0;
+      }
+      Array.from(images).forEach(image => image.style.display = "none");
+      images[currentIndex].style.display = "block";
+  })
+
+  return carousel
+}
