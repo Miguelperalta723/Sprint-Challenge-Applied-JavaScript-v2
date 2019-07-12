@@ -13,7 +13,6 @@ const headerContainer = document.querySelector('.header-container')
 
 headerContainer.appendChild(header())
 
-
 function header() {
     const header = document.createElement('div')
     const headerDate = document.createElement('span')

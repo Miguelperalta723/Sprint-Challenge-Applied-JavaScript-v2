@@ -39,8 +39,6 @@ function carouselComponent(){
   treesImg.classList.add('img')
   turntableImg.classList.add('img')
   
-
-
   leftBtn.textContent = ' < '
   rightBtn.textContent = ' > '
 
@@ -72,7 +70,6 @@ function carouselComponent(){
       images[currentIndex].style.display = "block";
   })
 
-
   rightBtn.addEventListener('click', function slideRight(){
       currentIndex += 1;
       if (currentIndex >= images.length){
@@ -81,7 +78,6 @@ function carouselComponent(){
       Array.from(images).forEach(image => image.style.display = "none");
       images[currentIndex].style.display = "block";
   })
-
 
   return carousel
 }
